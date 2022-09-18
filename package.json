@@ -1,0 +1,44 @@
+{
+    "name": "sequences",
+    "version": "1.0.0",
+    "api_version": "1.0.0",
+    "manufacturer": "Sequences",
+    "keywords": [
+        "Software",
+    ],
+    "product": "Sequences",
+    "shortname": "Sequences",
+    "description": "Module to control Sequences",
+    "main": "dist/index.js",
+    "scripts": {
+        "dev": "yarn build:watch",
+        "build": "npx rimraf dist && npx typescript@~4.5.5 -p tsconfig.build.json",
+        "build:main": "tsc -p tsconfig.build.json",
+        "build:watch": "tsc -p tsconfig.build.json --watch",
+        "lint": "eslint . --ext .ts",
+        "postinstall": "yarn build"
+    },
+    "homepage": "https://github.com/pjaspinski/companion-module-sequences#readme",
+    "bugs": {
+        "url": "https://github.com/pjaspinski/companion-module-sequences/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/pjaspinski/companion-module-sequences.git"
+    },
+    "license": "MIT",
+    "author": "Paweł Jaśpiński <pawel.jaspinski@tellyo.com>",
+    "contributors": [],
+    "dependencies": {},
+    "devDependencies": {
+        "@types/node": "^17.0.12",
+        "@typescript-eslint/eslint-plugin": "^5.10.1",
+        "@typescript-eslint/parser": "^5.10.1",
+        "eslint": "^8.7.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-prettier": "^4.0.0",
+        "prettier": "^2.5.1",
+        "rimraf": "^3.0.2",
+        "typescript": "^4.5.5"
+    }
+}
