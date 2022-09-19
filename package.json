@@ -4,7 +4,7 @@
     "api_version": "1.0.0",
     "manufacturer": "Sequences",
     "keywords": [
-        "Software",
+        "Software"
     ],
     "product": "Sequences",
     "shortname": "Sequences",
@@ -29,7 +29,10 @@
     "license": "MIT",
     "author": "Paweł Jaśpiński <pawel.jaspinski@tellyo.com>",
     "contributors": [],
-    "dependencies": {},
+    "dependencies": {
+        "sequences-types": "github:pjaspinski/sequences-types",
+        "socket.io-client": "^4.5.2"
+    },
     "devDependencies": {
         "@types/node": "^17.0.12",
         "@typescript-eslint/eslint-plugin": "^5.10.1",
