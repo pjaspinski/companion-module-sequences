@@ -7,45 +7,35 @@ const getFeedbacks = (instance: StreamStudioInstance) => {
     const dropdown = generateSequencesDropdown(instance.getSequences());
     const feedbacks: CompanionFeedbacks = {};
     feedbacks["sequenceStoppable"] = {
-        type: "boolean",
+        type: "advanced",
         label: "Sequence Stoppable",
         description: "Indicates whether this sequence can be stopped",
-        style: {
-            color: instance.rgb(0, 0, 0),
-            bgcolor: instance.rgb(255, 0, 0),
-            png64: stop
-        },
         options: [dropdown],
         callback: event => {
             const sequenceId = event.options.sequence as string;
             const sequence = instance.getSequenceById(sequenceId);
-            console.log(
-                "stoppable",
-                sequence,
-                !!(sequence && ["PAUSED", "RUNNING"].includes(sequence.playoutStatus.state))
-            );
-            return !!(sequence && ["PAUSED", "RUNNING"].includes(sequence.playoutStatus.state));
+            const active = !!(sequence && ["PAUSED", "RUNNING"].includes(sequence.playoutStatus.state));
+            return {
+                color: instance.rgb(0, 0, 0),
+                bgcolor: active ? instance.rgb(255, 0, 0) : instance.rgb(0, 0, 0),
+                png64: stop
+            };
         }
     };
     feedbacks["sequenceRestartable"] = {
-        type: "boolean",
+        type: "advanced",
         label: "Sequence Restartable",
         description: "Indicates whether this sequence can be restarted",
-        style: {
-            color: instance.rgb(0, 0, 0),
-            bgcolor: instance.rgb(0, 128, 255),
-            png64: restart
-        },
         options: [dropdown],
         callback: event => {
             const sequenceId = event.options.sequence as string;
             const sequence = instance.getSequenceById(sequenceId);
-            console.log(
-                "restartable",
-                sequence,
-                !!(sequence && ["PAUSED", "RUNNING"].includes(sequence.playoutStatus.state))
-            );
-            return !!(sequence && ["PAUSED", "RUNNING"].includes(sequence.playoutStatus.state));
+            const active = !!(sequence && ["PAUSED", "RUNNING"].includes(sequence.playoutStatus.state));
+            return {
+                color: instance.rgb(0, 0, 0),
+                bgcolor: active ? instance.rgb(0, 128, 255) : instance.rgb(0, 0, 0),
+                png64: restart
+            };
         }
     };
     feedbacks["sequencePlayablePausable"] = {
@@ -59,8 +49,8 @@ const getFeedbacks = (instance: StreamStudioInstance) => {
             console.log("play/pause", sequence);
             if (!sequence) return { bgcolor: instance.rgb(0, 0, 0) };
             if (["STOPPED", "PAUSED"].includes(sequence.playoutStatus.state))
-                return { bgcolor: instance.rgb(0, 255, 0), png64: play };
-            return { bgcolor: instance.rgb(255, 255, 0), png64: pause };
+                return { bgcolor: instance.rgb(0, 205, 80), png64: play };
+            return { bgcolor: instance.rgb(255, 172, 28), png64: pause };
         }
     };
 
